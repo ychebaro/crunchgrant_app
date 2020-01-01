@@ -48,7 +48,7 @@ def test():
 				abstract=result_df.iloc[0]['Abstract']))
 
 		# print(user_input)
-		print(results)
+		# print(results)
 		# print(resulta_df)
 		return render_template("details.html", results=results)
 
