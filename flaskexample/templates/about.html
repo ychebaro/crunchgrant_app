@@ -34,6 +34,39 @@ https://getbootstrap.com/docs/3.3/getting-started/#examples
     <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
+    <style type="text/css">
+        html, body {
+          height: 100%;
+        }
+        .container{
+          width: 1025px;
+        }
+        .vertical-center {
+          height: 100%;
+          width: 100%;
+          text-align: center;  /* align the inline(-block) elements horizontally */
+          font: 0/0 a;         /* remove the gap between inline(-block) elements */
+        }
+        .vertical-center:before {    /* create a full-height inline block pseudo=element */
+          content: ' ';
+          display: inline-block;
+          vertical-align: middle;  /* vertical alignment of the inline element */
+          height: 100%;
+        }
+        .vertical-center > .container {
+          max-width: 100%;
+          background-color: gold;
+          display: inline-block;
+          vertical-align: middle;  /* vertical alignment of the inline element */
+          font: 16px/1 "Helvetica Neue", Helvetica, Arial, sans-serif;        /* <-- reset the font property */
+        }
+        @media (max-width: 768px) {
+          .vertical-center:before {
+            /* height: auto; */
+            display: none;
+          }
+        }
+    </style>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -57,8 +90,8 @@ https://getbootstrap.com/docs/3.3/getting-started/#examples
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/about">About</a></li>
             <!-- <li><a href="#contact">Contact</a></li> -->
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Discover <span class="caret"></span></a>
@@ -76,47 +109,20 @@ https://getbootstrap.com/docs/3.3/getting-started/#examples
     <div class="container theme-showcase" role="main">
 
       <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
+      <div style="background:#FFFFFF00; !important" class="jumbotron">
         <h1>Crunchgrant</h1>
-        <p>Your portal to research grants</p>
-      </div>
-
-     <form action="/model_output" method="GET">
-
-      <!-- Container: form  -->
-
-      <div class="form-group">            
-         <label for="investigator">Investigator</label>
-         <input type="text" id="investigator" name='investigator' placeholder="e.g. Brasier">
-      </div>
-       <div class="form-group">      
-         <label for="institution">Institution</label>
-         <input type="text" id="institution" name='institution' placeholder="e.g. Stanford">
-      </div>
-       <div class="form-group">
-         <label for="keyword">Keyword</label>
-         <input type="text" id="keyword" name='keyword' placeholder="e.g. p53">
-       </div>
-
-        <div class='button-group btn-md'>   
-          <label>Funding amount $</label>
-         <select name='funding' id='funding'>
-            <option value='none'></option>
-            <option value='lt50K'>< 50K</option>
-            <option value='50K-100K'>50K-100K</option>
-            <option value='100K-500K'>100K-500K</option>
-            <option value='500K-1M'>500K-1M</option>
-            <option value='1M-5M'>1M-5M</option>
-            <option value='gt5M'>> 5M</option>
-            </optgroup>
-        </select>
+        <br><p>Your portal to research grants</p></br>
+        <!-- <div class="container"> -->
+        <br>
+          <p>Motivated by the idea of facilitating exchange of knownledge in the 
+           scientific community, Crunchgrant is build in the intent of aggregating 
+           research grants in the U.S. and worldwide for intelligent search.</p>
+           <p>Search features such as investigator name, institution, funding amount and
+           any term in the abstract can be used as filters to extract the 
+           relevant grant proposal.</p>
+        </br>
         </div>
-
-       <div>
-         <button type="submit" class="btn btn-default btn-md">Search</button>
-       </div>
-
-      </form>
+      </div>
     </div>
 </body>
 </html>
