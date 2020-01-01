@@ -65,22 +65,24 @@ def birthmodel_output():
 
 		# search from abstract
 		key = '%'+user_input['keyword']+'%'
-		query = "select * from nsf where Abstract like '"+key+"';"
-		resulta_df = pd.read_sql_query(query, conn)
-
-		# search from investigator
 		keyig = '%'+user_input['investigator']+'%'
-		query = "select * from nsf where InvestigatorsNames like '"+keyig+"';"
-		resultig_df = pd.read_sql_query(query, conn)
-
-		# search from institution
 		keyis = '%'+user_input['institution']+'%'
-		query = "select * from nsf where Institution like '"+keyis+"';"
-		resultis_df = pd.read_sql_query(query, conn)
+		query = "select * from nsf where Abstract like '"+key+"' and InvestigatorsNames like '"+keyig+"' and Institution like '"+keyis+"';"
+		result_df = pd.read_sql_query(query, conn)
 
-		# merge the dataframes dropping duplicates
-		tmp = pd.merge(resulta_df, resultig_df, how='inner')
-		result_df = pd.merge(tmp, resultis_df, how='inner')
+		# # search from investigator
+		# keyig = '%'+user_input['investigator']+'%'
+		# query = "select * from nsf where InvestigatorsNames like '"+keyig+"';"
+		# resultig_df = pd.read_sql_query(query, conn)
+
+		# # search from institution
+		# keyis = '%'+user_input['institution']+'%'
+		# query = "select * from nsf where Institution like '"+keyis+"';"
+		# resultis_df = pd.read_sql_query(query, conn)
+
+		# # merge the dataframes dropping duplicates
+		# tmp = pd.merge(resulta_df, resultig_df, how='inner')
+		# result_df = pd.merge(tmp, resultis_df, how='inner')
 		result_df.dropna(inplace=True)
 		result_df['AwardAmount'] = result_df['AwardAmount'].astype(int)
 
